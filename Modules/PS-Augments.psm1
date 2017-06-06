@@ -1,4 +1,3 @@
-#region Write-DevHost
 <#
 .Synopsis
    Writes message to console, prepends computer name of the console it's writing on.
@@ -17,9 +16,7 @@ function Write-DevHost() {
   End {
   }
 }
-#endregion
 
-#region Write-DevHeader
 <#
 .Synopsis
    Writes header to console, makes it a header message
@@ -42,4 +39,42 @@ function Write-DevHeader() {
   End {
   }
 }
-#endregion
+
+#***********************************************************
+# common powershell profile commands
+#***********************************************************
+
+<#
+.Synopsis
+   Open profile in VSCode
+#>
+function profile() {
+  code $profile
+}
+
+<#
+.Synopsis
+   Refresh the environment variables in PS
+#>
+function refresh {
+  RefreshEnv.cmd
+}
+
+<#
+.Synopsis
+   Get Profile location
+#>
+function Get-ProfileLoc {
+  return "$env:USERPROFILE\Documents\WindowsPowerShell"
+}
+
+<#
+.Synopsis
+   GO to Profile location
+#>
+function profileloc {
+  $profileLoc = Get-ProfileLoc
+  Push-Location $profileLoc
+}
+
+Export-ModuleMember -Function *
