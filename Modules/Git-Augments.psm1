@@ -1,4 +1,4 @@
-Import-Module -Name .\PS-Augments.psm1 -Force -Verbose
+Import-Module -Name $PSScriptRoot\PS-Augments.psm1 -Force -Verbose
 #***********************************************************
 # common git commands
 #***********************************************************
