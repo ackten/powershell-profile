@@ -68,6 +68,23 @@ param(
   git pull
 }
 
+# run git checkout
+function newgco {
+  param(
+    [parameter(Mandatory=$true, HelpMessage="Enter branch name you wish to checkout.")] [string] $branchName,
+    [parameter(Mandatory=$false, HelpMessage="Enter (y/n) if you want to force checkout of that branch.")] [string] $force
+    )
+    if($force -eq "y" )
+    {
+      Write-Host "Forcing checkout to $branchName, dropping all existing code."
+      git stash
+      git stash drop
+    }
+    git checkout develop
+    git checkout -b $branchName
+    git push --set-origin-upstream $branchName
+  }
+
 
 
 Export-ModuleMember -Function *

@@ -1,5 +1,15 @@
 Import-Module -Name .\Modules\Git-Augments.psm1 -Force -Verbose
 
+# cd to dashboard
+function dash() {
+  Push-Location "C:\ackten\dashboard"
+}
+
+# cd to main-site
+function site() {
+  Push-Location "C:\ackten\main-site"
+}
+
 
 # git commit
 function adgca() {
@@ -26,5 +36,5 @@ function adgco {
 
     $branchName = "feature/$projectType-$ticketNumber/$description"
 
-    gco $branchName $force
+    newgco $branchName $force
   }
