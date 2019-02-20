@@ -82,7 +82,7 @@ function newgco {
     }
     git checkout develop
     git checkout -b $branchName
-    git push --set-origin-upstream $branchName
+    git push --set-upstream origin $branchName
   }
 
 

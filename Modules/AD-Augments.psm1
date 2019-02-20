@@ -15,11 +15,13 @@ function site() {
 function adgca() {
   param(
   [parameter(Mandatory=$true, HelpMessage="Enter ticket number.")] [string] $ticketNumber,
-  [parameter(Mandatory=$true, HelpMessage="Enter commit message.")] [string] $commitMsg
+  [parameter(Mandatory=$true, HelpMessage="Enter commit message.")] [string] $commitMsg,
+  [parameter(Mandatory=$false, HelpMessage="Enter project type.")] [string] $projectType = "AD"
   )
+
   $commitMsg = "[$projectType-$ticketNumber]: $commitMsg"
   if (-Not $commitMsg.EndsWith(".")) {
-
+    $commitMsg = "$commitMsg."
   }
   gca "$commitMsg"
 }
