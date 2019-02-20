@@ -32,6 +32,7 @@ function adgca() {
     $commitMsg = "$commitMsg."
   }
   gca "$commitMsg"
+  git push
 }
 
 
