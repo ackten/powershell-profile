@@ -14,12 +14,20 @@ function site() {
 # git commit
 function adgca() {
   param(
-  [parameter(Mandatory=$true, HelpMessage="Enter ticket number.")] [string] $ticketNumber,
   [parameter(Mandatory=$true, HelpMessage="Enter commit message.")] [string] $commitMsg,
-  [parameter(Mandatory=$false, HelpMessage="Enter project type.")] [string] $projectType = "AD"
+  [parameter(Mandatory=$false, HelpMessage="Enter ticket number.")] [string] $ticketNumber
   )
 
-  $commitMsg = "[$projectType-$ticketNumber]: $commitMsg"
+  if ($ticketNumber -eq "") {
+    $branchName = &git rev-parse --abbrev-ref HEAD
+    $branchNameArray = $branchName.split("/")
+    if ($branchNameArray.Count -lt 3) {
+      throw "Branch not formed properly"
+    }
+    $ticketNumber = $branchNameArray[1]
+  }
+
+  $commitMsg = "[$ticketNumber]: $commitMsg"
   if (-Not $commitMsg.EndsWith(".")) {
     $commitMsg = "$commitMsg."
   }
