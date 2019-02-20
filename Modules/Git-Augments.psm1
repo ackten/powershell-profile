@@ -40,6 +40,7 @@ function gca() {
   )
   git add .
   git commit -a -m $commitMsg
+  git push
 }
 
 
@@ -81,6 +82,10 @@ function newgco {
       git stash drop
     }
     git checkout develop
+    git pull
+
+    $branchName = $branchName -replace " ", "-"
+
     git checkout -b $branchName
     git push --set-upstream origin $branchName
   }
