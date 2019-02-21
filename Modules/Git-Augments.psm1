@@ -39,7 +39,7 @@ function gca() {
   [parameter(Mandatory=$true, HelpMessage="Enter commit message.")] [string] $commitMsg
   )
   git add .
-  git commit -a -m $commitMsg
+  git commit -m $commitMsg
   git push
 }
 

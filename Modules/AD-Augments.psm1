@@ -27,12 +27,12 @@ function adgca() {
     $ticketNumber = $branchNameArray[1]
   }
 
+  Write-host $commitMsg
   $commitMsg = "[$ticketNumber]: $commitMsg"
   if (-Not $commitMsg.EndsWith(".")) {
     $commitMsg = "$commitMsg."
   }
   gca "$commitMsg"
-  git push
 }
 
 
